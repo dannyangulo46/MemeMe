@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Meme Editor View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,8 +15,58 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dpa-Gb-8Rh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CmO-XA-GEt">
+                                <rect key="frame" x="252" y="114" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mnp-nb-IeS">
+                                <rect key="frame" x="252" y="388" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdm-QC-L9C">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Pick Image" id="G9h-YH-Iob">
+                                        <connections>
+                                            <action selector="pickAnImage:" destination="vXZ-lx-hvc" id="fxm-Bn-XWz"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uMi-NW-ymW"/>
+                                    <barButtonItem title="Camera" id="MgK-r4-aSB">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="vXZ-lx-hvc" id="8wn-xF-6Gv"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Mnp-nb-IeS" secondAttribute="bottom" constant="182" id="2kI-fJ-duf"/>
+                            <constraint firstItem="Vdm-QC-L9C" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="6Zs-p8-qyv"/>
+                            <constraint firstItem="Mnp-nb-IeS" firstAttribute="centerX" secondItem="Vdm-QC-L9C" secondAttribute="centerX" id="7nZ-0g-5fh"/>
+                            <constraint firstItem="dpa-Gb-8Rh" firstAttribute="trailing" secondItem="Vdm-QC-L9C" secondAttribute="trailing" id="FDN-jv-TPo"/>
+                            <constraint firstAttribute="trailing" secondItem="Vdm-QC-L9C" secondAttribute="trailing" id="J7O-yf-yoI"/>
+                            <constraint firstItem="Vdm-QC-L9C" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="J82-CW-Wqu"/>
+                            <constraint firstItem="Mnp-nb-IeS" firstAttribute="trailing" secondItem="CmO-XA-GEt" secondAttribute="trailing" id="JK7-Ta-7aT"/>
+                            <constraint firstItem="dpa-Gb-8Rh" firstAttribute="leading" secondItem="Vdm-QC-L9C" secondAttribute="leading" id="Oku-U4-A74"/>
+                            <constraint firstItem="dpa-Gb-8Rh" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="kaI-JN-n4f"/>
+                            <constraint firstItem="Mnp-nb-IeS" firstAttribute="leading" secondItem="CmO-XA-GEt" secondAttribute="leading" id="tHv-UD-wIB"/>
+                            <constraint firstItem="dpa-Gb-8Rh" firstAttribute="bottom" secondItem="Vdm-QC-L9C" secondAttribute="top" id="wA2-aL-nBX"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cameraBarButton" destination="MgK-r4-aSB" id="hQm-ma-KA9"/>
+                        <outlet property="imagePickedView" destination="dpa-Gb-8Rh" id="gpY-n7-tse"/>
+                        <outlet property="textFieldBottom" destination="Mnp-nb-IeS" id="120-Tm-tG4"/>
+                        <outlet property="textFieldTop" destination="CmO-XA-GEt" id="MeA-6y-92k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
