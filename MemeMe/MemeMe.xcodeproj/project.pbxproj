@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BDFA9311B1A7BC60029F647 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDFA9301B1A7BC60029F647 /* Meme.swift */; };
 		5BF317DD1B12F6BC00F10A9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF317DC1B12F6BC00F10A9D /* AppDelegate.swift */; };
-		5BF317DF1B12F6BC00F10A9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF317DE1B12F6BC00F10A9D /* ViewController.swift */; };
+		5BF317DF1B12F6BC00F10A9D /* MemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF317DE1B12F6BC00F10A9D /* MemeEditorViewController.swift */; };
 		5BF317E21B12F6BC00F10A9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BF317E01B12F6BC00F10A9D /* Main.storyboard */; };
 		5BF317E41B12F6BC00F10A9D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF317E31B12F6BC00F10A9D /* Images.xcassets */; };
 		5BF317E71B12F6BC00F10A9D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF317E51B12F6BC00F10A9D /* LaunchScreen.xib */; };
@@ -26,10 +27,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5BDFA9301B1A7BC60029F647 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		5BF317D71B12F6BC00F10A9D /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF317DB1B12F6BC00F10A9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BF317DC1B12F6BC00F10A9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5BF317DE1B12F6BC00F10A9D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5BF317DE1B12F6BC00F10A9D /* MemeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeEditorViewController.swift; sourceTree = "<group>"; };
 		5BF317E11B12F6BC00F10A9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5BF317E31B12F6BC00F10A9D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5BF317E61B12F6BC00F10A9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -78,7 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				5BF317DC1B12F6BC00F10A9D /* AppDelegate.swift */,
-				5BF317DE1B12F6BC00F10A9D /* ViewController.swift */,
+				5BDFA9301B1A7BC60029F647 /* Meme.swift */,
+				5BF317DE1B12F6BC00F10A9D /* MemeEditorViewController.swift */,
 				5BF317E01B12F6BC00F10A9D /* Main.storyboard */,
 				5BF317E31B12F6BC00F10A9D /* Images.xcassets */,
 				5BF317E51B12F6BC00F10A9D /* LaunchScreen.xib */,
@@ -212,7 +215,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BF317DF1B12F6BC00F10A9D /* ViewController.swift in Sources */,
+				5BDFA9311B1A7BC60029F647 /* Meme.swift in Sources */,
+				5BF317DF1B12F6BC00F10A9D /* MemeEditorViewController.swift in Sources */,
 				5BF317DD1B12F6BC00F10A9D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +409,7 @@
 				5BF317F81B12F6BC00F10A9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5BF317F91B12F6BC00F10A9D /* Build configuration list for PBXNativeTarget "MemeMeTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +418,7 @@
 				5BF317FB1B12F6BC00F10A9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
