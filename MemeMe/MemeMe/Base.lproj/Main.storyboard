@@ -16,19 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dpa-Gb-8Rh">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CmO-XA-GEt">
-                                <rect key="frame" x="252" y="114" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mnp-nb-IeS">
-                                <rect key="frame" x="252" y="388" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdm-QC-L9C">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -45,19 +32,40 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dpa-Gb-8Rh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CmO-XA-GEt">
+                                <rect key="frame" x="180" y="95" width="241" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="3KN-rd-m4c"/>
+                                    <constraint firstAttribute="width" constant="241" id="cA9-nh-dyf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mnp-nb-IeS">
+                                <rect key="frame" x="180" y="392" width="241" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="gxg-yp-Guk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Mnp-nb-IeS" secondAttribute="bottom" constant="182" id="2kI-fJ-duf"/>
                             <constraint firstItem="Vdm-QC-L9C" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="6Zs-p8-qyv"/>
-                            <constraint firstItem="Mnp-nb-IeS" firstAttribute="centerX" secondItem="Vdm-QC-L9C" secondAttribute="centerX" id="7nZ-0g-5fh"/>
                             <constraint firstItem="dpa-Gb-8Rh" firstAttribute="trailing" secondItem="Vdm-QC-L9C" secondAttribute="trailing" id="FDN-jv-TPo"/>
+                            <constraint firstItem="CmO-XA-GEt" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="75" id="FVG-XG-buJ"/>
                             <constraint firstAttribute="trailing" secondItem="Vdm-QC-L9C" secondAttribute="trailing" id="J7O-yf-yoI"/>
                             <constraint firstItem="Vdm-QC-L9C" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="J82-CW-Wqu"/>
-                            <constraint firstItem="Mnp-nb-IeS" firstAttribute="trailing" secondItem="CmO-XA-GEt" secondAttribute="trailing" id="JK7-Ta-7aT"/>
+                            <constraint firstItem="CmO-XA-GEt" firstAttribute="leading" secondItem="Mnp-nb-IeS" secondAttribute="leading" id="L3j-mq-h8v"/>
+                            <constraint firstItem="CmO-XA-GEt" firstAttribute="centerX" secondItem="Vdm-QC-L9C" secondAttribute="centerX" id="MMy-Vs-lKd"/>
                             <constraint firstItem="dpa-Gb-8Rh" firstAttribute="leading" secondItem="Vdm-QC-L9C" secondAttribute="leading" id="Oku-U4-A74"/>
+                            <constraint firstItem="CmO-XA-GEt" firstAttribute="trailing" secondItem="Mnp-nb-IeS" secondAttribute="trailing" id="jeR-Oy-2xa"/>
+                            <constraint firstAttribute="bottom" secondItem="Mnp-nb-IeS" secondAttribute="bottom" constant="170" id="jf9-Xn-PoQ"/>
                             <constraint firstItem="dpa-Gb-8Rh" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="kaI-JN-n4f"/>
-                            <constraint firstItem="Mnp-nb-IeS" firstAttribute="leading" secondItem="CmO-XA-GEt" secondAttribute="leading" id="tHv-UD-wIB"/>
                             <constraint firstItem="dpa-Gb-8Rh" firstAttribute="bottom" secondItem="Vdm-QC-L9C" secondAttribute="top" id="wA2-aL-nBX"/>
                         </constraints>
                     </view>
