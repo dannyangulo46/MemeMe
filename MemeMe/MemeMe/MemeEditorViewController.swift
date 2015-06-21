@@ -10,6 +10,11 @@ import UIKit
 
 class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
+    //VARIABLES
+    
+    var memedImage : UIImage!
+    
+    
     // OUTLETS
     
     
@@ -21,7 +26,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBOutlet weak var textFieldBottom: UITextField!
     
+    @IBOutlet weak var mainToolBar: UIToolbar!
     
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     // VIEW CONTROLLER LIFE CYCLE
     
     override func viewDidLoad() {
@@ -47,6 +54,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillAppear(animated: Bool) {
         cameraBarButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         self.subscribeToKeyboardNotifications()
+        
+        if imagePickedView.image != nil {
+            shareButton.enabled = true
+        } else {
+            shareButton.enabled = false
+            
+        }
+        
 
     }
     
@@ -57,6 +72,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     // CORE FUNCTIONS
 
+    
+    @IBAction func dismissMyself(sender: UIBarButtonItem) {
+    
+    self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    
     @IBAction func pickAnImage(sender: AnyObject) {
         
         let pickerController = UIImagePickerController()
@@ -76,6 +99,30 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
+    @IBAction func launchActivityViewController(sender: UIBarButtonItem) {
+        
+        self.memedImage = generateMemedImage()
+        
+        let objectToShare = [memedImage]
+        
+        let activityVC = UIActivityViewController(activityItems: objectToShare, applicationActivities: nil)
+        
+        
+        
+        self.presentViewController(activityVC, animated: true, completion: nil)
+        
+        
+        
+        activityVC.completionWithItemsHandler = { (activity: String!, completed: Bool, items: [AnyObject]!, error: NSError!) -> Void in
+            if completed {
+                self.saveMeme()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+        
+        
+    
+    }
 
     // Methods to shift view up and down as keyboard appears or disappears
     
@@ -108,23 +155,37 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 
     // Create the new image with the text
     
-    func save() {
+    func saveMeme() {
         
-        var memedImage = generateMemedImage()
+        //var memedImage = generateMemedImage()
         
-        var meme = Meme(topText: textFieldTop.text, bottomText: textFieldBottom.text, originalImage: imagePickedView.image!, memedImage: memedImage)
+        var meme = Meme(topText: textFieldTop.text, bottomText: textFieldBottom.text, originalImage: imagePickedView.image!, memedImage: self.memedImage)
+        
+        //Add it to the memes Array on the Application delegate - this will be the shared model
+        (UIApplication.sharedApplication().delegate as AppDelegate).memes.append(meme)
         
     }
     
     func generateMemedImage() -> UIImage {
         
-        // TODO: Hide toolbar and navbar - I will take care of this soon
+        // Hide toolbar and navbar 
+        
+        self.navigationController?.setToolbarHidden(true, animated: true)
+        self.mainToolBar.hidden = true
+        
         
         //Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+       
+        // Unhide toolbar and navbar
+        
+        self.navigationController?.setToolbarHidden(false, animated: true)
+        self.mainToolBar.hidden = false
+        
+        
         
         return memedImage
     }
