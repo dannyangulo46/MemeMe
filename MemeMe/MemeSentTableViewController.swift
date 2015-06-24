@@ -11,14 +11,25 @@ import UIKit
 class MemeSentTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-   
+    var memes : [Meme]!
+    
+    // MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.dataSource = self
+        tableView.delegate = self
         
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as AppDelegate
+        memes = appDelegate.memes
+        
+    }
+    
     
     override func viewDidAppear(animated: Bool) {
         
