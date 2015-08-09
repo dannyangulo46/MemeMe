@@ -11,7 +11,7 @@ import UIKit
 class MemeSentTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    var memes : [Meme]!
+    var memes = [Meme]()  //Ask the question on what is the difference between that and using memes: [Meme]!
     
     // MARK: - ViewController Life Cycle
     
@@ -26,7 +26,7 @@ class MemeSentTableViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewWillAppear(animated: Bool) {
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as AppDelegate
-        memes = appDelegate.memes
+        self.memes = appDelegate.memes
         
     }
     
@@ -35,15 +35,17 @@ class MemeSentTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         // Note: Why doesn't this work when I use wiewWillAppear instead of viewDidAppear?
         
-        if (UIApplication.sharedApplication().delegate as AppDelegate).memes.isEmpty {
+        //if (UIApplication.sharedApplication().delegate as AppDelegate).memes.isEmpty {
+        if !(self.memes.count > 0) {
             var storyboard = UIStoryboard(name: "Main", bundle: nil)
             var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as MemeEditorViewController
             self.presentViewController(editMeme, animated: true, completion: nil)
+        
         }
         
     }
     
-    
+    // MARK: TableView Datasource and Delegate methods
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -58,7 +60,9 @@ class MemeSentTableViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // Return the number of prompts in the storyNode (The 2 is just a place holder)
-        return (UIApplication.sharedApplication().delegate as AppDelegate).memes.count
+        //return (UIApplication.sharedApplication().delegate as AppDelegate).memes.count
+    
+        return self.memes.count
     }
     
     
