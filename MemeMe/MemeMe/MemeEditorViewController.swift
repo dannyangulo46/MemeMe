@@ -29,6 +29,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var mainToolBar: UIToolbar!
     
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    
+    
+    @IBOutlet weak var navBar: UINavigationBar!
+    
+    
     // VIEW CONTROLLER LIFE CYCLE
     
     override func viewDidLoad() {
@@ -137,19 +142,25 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
-    }
-    
-    func keyboardWillDisappear(notification: NSNotification) {
-        self.view.frame.origin.y += getKeyboardHeight(notification)
         
+        if textFieldBottom.isFirstResponder() {
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+    
+        }
+    }
+    func keyboardWillDisappear(notification: NSNotification) {
+     
+        if !(self.view.frame.origin.y == 0) {
+        
+        self.view.frame.origin.y += getKeyboardHeight(notification)
+        }
     }
     
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat
     {
         let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.CGRectValue().height
     }
 
@@ -162,7 +173,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         var meme = Meme(topText: textFieldTop.text, bottomText: textFieldBottom.text, originalImage: imagePickedView.image!, memedImage: self.memedImage)
         
         //Add it to the memes Array on the Application delegate - this will be the shared model
-        (UIApplication.sharedApplication().delegate as AppDelegate).memes.append(meme)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
         
     }
     
@@ -170,7 +181,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         // Hide toolbar and navbar 
         
-        self.navigationController?.setToolbarHidden(true, animated: true)
+        //self.navigationController?.setToolbarHidden(true, animated: true)
+        
+        self.navBar.hidden = true
         self.mainToolBar.hidden = true
         
         
@@ -182,9 +195,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
        
         // Unhide toolbar and navbar
         
-        self.navigationController?.setToolbarHidden(false, animated: true)
-        self.mainToolBar.hidden = false
+        //self.navigationController?.setToolbarHidden(false, animated: true)
         
+        self.mainToolBar.hidden = false
+        self.navBar.hidden = false
         
         
         return memedImage
@@ -202,6 +216,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
         
         return false

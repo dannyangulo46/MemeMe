@@ -17,7 +17,7 @@ class Meme: NSObject {
     let memedImage: UIImage?
     
     init(topText: String, bottomText:String, originalImage: UIImage, memedImage: UIImage) {
-        super.init()
+        //super.init()
         
         self.topText = topText
         self.bottomText = bottomText

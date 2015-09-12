@@ -25,7 +25,7 @@ class MemeSentTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(animated: Bool) {
         let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as AppDelegate
+        let appDelegate = object as! AppDelegate
         self.memes = appDelegate.memes
         
     }
@@ -38,7 +38,7 @@ class MemeSentTableViewController: UIViewController, UITableViewDelegate, UITabl
         //if (UIApplication.sharedApplication().delegate as AppDelegate).memes.isEmpty {
         if !(self.memes.count > 0) {
             var storyboard = UIStoryboard(name: "Main", bundle: nil)
-            var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as MemeEditorViewController
+            var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
             self.presentViewController(editMeme, animated: true, completion: nil)
         
         }
@@ -70,9 +70,9 @@ class MemeSentTableViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         //Dequeue a cell and populate it with text from the correct prompt.
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
-        cell.imageView!.image = (UIApplication.sharedApplication().delegate as AppDelegate).memes[indexPath.row].memedImage
-        cell.textLabel?.text = (UIApplication.sharedApplication().delegate as AppDelegate).memes[indexPath.row].bottomText
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
+        cell.imageView!.image = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row].memedImage
+        cell.textLabel?.text = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row].bottomText
         
         return cell
     }
@@ -81,7 +81,7 @@ class MemeSentTableViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func addMemedImage(sender: UIBarButtonItem) {
         
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as MemeEditorViewController
+        var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
         self.presentViewController(editMeme, animated: true, completion: nil)
     }
     

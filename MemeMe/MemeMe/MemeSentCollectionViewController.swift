@@ -13,23 +13,29 @@ import UIKit
 class MemeSentCollectionViewController: UICollectionViewController {
 
     var memes = [Meme]()  //Ask the question on what is the difference between that and using memes: [Meme]!
+  
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     
     override func viewDidLoad() {
          super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        
+        let space: CGFloat = 3.0
+        let dimension = (self.view.frame.size.width - (2 * space))/3.0
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSizeMake(dimension, dimension)
+        
+        
     }
 
     override func viewWillAppear(animated: Bool) {
         let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as AppDelegate
+        let appDelegate = object as! AppDelegate
         self.memes = appDelegate.memes
+        
+        self.collectionView!.reloadData()
     }
     
 
@@ -47,7 +53,7 @@ class MemeSentCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CustomMemeCell", forIndexPath: indexPath) as MemedCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CustomMemeCell", forIndexPath: indexPath) as! MemedCollectionViewCell
         
         let meme = memes[indexPath.item]
         
@@ -58,10 +64,23 @@ class MemeSentCollectionViewController: UICollectionViewController {
         
         return cell
     }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeMeDetailViewController")! as! MemeMeDetailViewController
+        
+        detailController.image = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.item].memedImage
+        
+        self.navigationController!.pushViewController(detailController, animated: true)
+
+        
+        
+    }
+    
 
     @IBAction func addMemedImage(sender: UIBarButtonItem) {
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as MemeEditorViewController
+        var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
         self.presentViewController(editMeme, animated: true, completion: nil)
 
         
