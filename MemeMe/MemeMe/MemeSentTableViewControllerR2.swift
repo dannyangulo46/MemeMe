@@ -24,29 +24,25 @@ class MemeSentTableViewControllerR2: UITableViewController {
         let appDelegate = object as! AppDelegate
         self.memes = appDelegate.memes
         self.tableView!.reloadData()
+        self.tabBarController?.tabBar.hidden = false
     }
     
     override func viewDidAppear(animated: Bool) {
        
         // Note: Why doesn't this work when I use wiewWillAppear instead of viewDidAppear?
         
-        //if (UIApplication.sharedApplication().delegate as AppDelegate).memes.isEmpty {
-        if !(self.memes.count > 0) {
-            var storyboard = UIStoryboard(name: "Main", bundle: nil)
-            var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
-            self.presentViewController(editMeme, animated: true, completion: nil)
+       
+       // if !(self.memes.count > 0) {
+       //     var storyboard = UIStoryboard(name: "Main", bundle: nil)
+       //     var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as!//MemeEditorViewController
+       //     self.presentViewController(editMeme, animated: true, completion: nil)
             
-        }
+        //}
     }
     
     // MARK: - Table view data source
 
-/*    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
-    }
-*/
+
   
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
@@ -78,8 +74,12 @@ class MemeSentTableViewControllerR2: UITableViewController {
         
         detailController.image = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row].memedImage
         
+        self.tabBarController?.tabBar.hidden = true
+        
         self.navigationController!.pushViewController(detailController, animated: true)
     
+    
+        
     }
     
     

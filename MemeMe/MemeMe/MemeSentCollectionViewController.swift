@@ -34,7 +34,7 @@ class MemeSentCollectionViewController: UICollectionViewController {
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         self.memes = appDelegate.memes
-        
+        self.tabBarController?.tabBar.hidden = false
         self.collectionView!.reloadData()
     }
     
@@ -70,6 +70,8 @@ class MemeSentCollectionViewController: UICollectionViewController {
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeMeDetailViewController")! as! MemeMeDetailViewController
         
         detailController.image = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.item].memedImage
+        
+        self.tabBarController?.tabBar.hidden = true
         
         self.navigationController!.pushViewController(detailController, animated: true)
 

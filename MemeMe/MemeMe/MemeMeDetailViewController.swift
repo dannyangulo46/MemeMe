@@ -19,6 +19,8 @@ class MemeMeDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.imageView.image = image
+        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "onRightBarButtonTap"), animated:true)
+        
         
         //self.navBar.hidden = true
         //self.mainToolBar.hidden = true

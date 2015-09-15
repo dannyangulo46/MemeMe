@@ -38,7 +38,7 @@
             </objects>
             <point key="canvasLocation" x="947" y="396"/>
         </scene>
-        <!--Meme Me Detail View Controller-->
+        <!--Title-->
         <scene sceneID="c19-e0-r8V">
             <objects>
                 <viewController storyboardIdentifier="MemeMeDetailViewController" id="tl1-yA-9o5" customClass="MemeMeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -51,17 +51,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NoV-FL-WCs">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NoV-FL-WCs" firstAttribute="bottom" secondItem="Gla-VW-Aa2" secondAttribute="top" id="JLS-h6-rIS"/>
-                            <constraint firstItem="NoV-FL-WCs" firstAttribute="top" secondItem="uPL-8k-bKR" secondAttribute="top" id="L68-oe-hYn"/>
-                            <constraint firstItem="NoV-FL-WCs" firstAttribute="leading" secondItem="uPL-8k-bKR" secondAttribute="leading" id="dQU-I7-FYd"/>
-                            <constraint firstAttribute="trailing" secondItem="NoV-FL-WCs" secondAttribute="trailing" id="twB-SD-wjA"/>
+                            <constraint firstAttribute="trailing" secondItem="NoV-FL-WCs" secondAttribute="trailing" id="3HQ-C1-eJk"/>
+                            <constraint firstItem="NoV-FL-WCs" firstAttribute="leading" secondItem="uPL-8k-bKR" secondAttribute="leading" id="dUB-7E-df4"/>
+                            <constraint firstItem="NoV-FL-WCs" firstAttribute="top" secondItem="2Hy-EC-P5t" secondAttribute="bottom" id="hjN-RG-wiA"/>
+                            <constraint firstItem="NoV-FL-WCs" firstAttribute="bottom" secondItem="Gla-VW-Aa2" secondAttribute="top" id="tdW-f2-zZp"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="EcG-qR-uoL"/>
                     <connections>
                         <outlet property="imageView" destination="NoV-FL-WCs" id="gqe-0k-ztw"/>
                     </connections>
