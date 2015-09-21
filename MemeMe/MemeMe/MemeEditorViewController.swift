@@ -168,7 +168,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func saveMeme() {
         
-        //var memedImage = generateMemedImage()
+        
         
         var meme = Meme(topText: textFieldTop.text, bottomText: textFieldBottom.text, originalImage: imagePickedView.image!, memedImage: self.memedImage)
         
@@ -181,7 +181,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         // Hide toolbar and navbar 
         
-        //self.navigationController?.setToolbarHidden(true, animated: true)
+    
         
         self.navBar.hidden = true
         self.mainToolBar.hidden = true
@@ -193,9 +193,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
        
-        // Unhide toolbar and navbar
         
-        //self.navigationController?.setToolbarHidden(false, animated: true)
         
         self.mainToolBar.hidden = false
         self.navBar.hidden = false
@@ -203,8 +201,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         return memedImage
     }
-    
-    
     
     
     // UITEXTFIELDS DELEGATE METHODS

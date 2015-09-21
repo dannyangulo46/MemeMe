@@ -69,7 +69,7 @@ class MemeSentCollectionViewController: UICollectionViewController {
         
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeMeDetailViewController")! as! MemeMeDetailViewController
         
-        detailController.image = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.item].memedImage
+        detailController.memeSelected = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.item]
         
         self.tabBarController?.tabBar.hidden = true
         

@@ -72,13 +72,25 @@ class MemeSentTableViewControllerR2: UITableViewController {
         
        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeMeDetailViewController")! as! MemeMeDetailViewController
         
-        detailController.image = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row].memedImage
+        detailController.memeSelected = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row]
         
         self.tabBarController?.tabBar.hidden = true
         
         self.navigationController!.pushViewController(detailController, animated: true)
+        
+    }
     
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle==UITableViewCellEditingStyle.Delete
+        {
+            let object = UIApplication.sharedApplication().delegate
+            let appDelegate = object as! AppDelegate
+            appDelegate.memes.removeAtIndex(indexPath.row)
+            self.memes.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
         
     }
     

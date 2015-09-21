@@ -38,10 +38,10 @@
             </objects>
             <point key="canvasLocation" x="947" y="396"/>
         </scene>
-        <!--Title-->
+        <!--MemeMe Image-->
         <scene sceneID="c19-e0-r8V">
             <objects>
-                <viewController storyboardIdentifier="MemeMeDetailViewController" id="tl1-yA-9o5" customClass="MemeMeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeMeDetailViewController" title="MemeMe Image" id="tl1-yA-9o5" customClass="MemeMeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Hy-EC-P5t"/>
                         <viewControllerLayoutGuide type="bottom" id="Gla-VW-Aa2"/>
