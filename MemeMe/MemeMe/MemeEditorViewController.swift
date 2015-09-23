@@ -34,6 +34,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var navBar: UINavigationBar!
     
     
+    // Variables to be used when user is on DetailView and wants to edit the original image
+    var originalImage : UIImage?
+    var textTop:String?
+    var textBottom:String?
+    
     // VIEW CONTROLLER LIFE CYCLE
     
     override func viewDidLoad() {
@@ -59,6 +64,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillAppear(animated: Bool) {
         cameraBarButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         self.subscribeToKeyboardNotifications()
+        
+        if let tempImage = originalImage {
+            imagePickedView.image = tempImage
+            textFieldTop.text = textTop!
+            textFieldBottom.text = textBottom!
+        
+        }
+        
         
         if imagePickedView.image != nil {
             shareButton.enabled = true
@@ -170,7 +183,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         
         
-        var meme = Meme(topText: textFieldTop.text, bottomText: textFieldBottom.text, originalImage: imagePickedView.image!, memedImage: self.memedImage)
+        var meme = Meme(topText: textFieldTop.text, bottomText: textFieldBottom.text, originalImage: self.imagePickedView.image!, memedImage: self.memedImage)
         
         //Add it to the memes Array on the Application delegate - this will be the shared model
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
