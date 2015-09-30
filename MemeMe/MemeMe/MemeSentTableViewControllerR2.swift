@@ -53,8 +53,12 @@ class MemeSentTableViewControllerR2: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
-
+        
+       
+        
         cell.imageView!.image = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row].memedImage
+        
+        cell.imageView!.contentMode = .ScaleAspectFill
         
         var phrase = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row].topText
         
@@ -92,6 +96,10 @@ class MemeSentTableViewControllerR2: UITableViewController {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 90
     }
     
     
