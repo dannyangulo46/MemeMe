@@ -146,12 +146,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillDisappear:", name: UIKeyboardDidHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillDisappear:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardDidHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -192,9 +192,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func generateMemedImage() -> UIImage {
         
-        // Hide toolbar and navbar 
+        // Hide toolbar and navbar to memorialize picture with text
         
-    
         
         self.navBar.hidden = true
         self.mainToolBar.hidden = true
@@ -207,7 +206,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         UIGraphicsEndImageContext()
        
         
-        
+        // Show toolbar and navbar
         self.mainToolBar.hidden = false
         self.navBar.hidden = false
         

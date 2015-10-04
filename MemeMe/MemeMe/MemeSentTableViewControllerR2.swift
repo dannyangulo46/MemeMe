@@ -29,24 +29,10 @@ class MemeSentTableViewControllerR2: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
        
-        // Note: Why doesn't this work when I use wiewWillAppear instead of viewDidAppear?
-        
-       
-       // if !(self.memes.count > 0) {
-       //     var storyboard = UIStoryboard(name: "Main", bundle: nil)
-       //     var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as!//MemeEditorViewController
-       //     self.presentViewController(editMeme, animated: true, completion: nil)
-            
-        //}
-    }
+          }
     
-    // MARK: - Table view data source
-
-
   
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
         return self.memes.count
     }
 

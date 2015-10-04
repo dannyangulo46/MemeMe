@@ -8,7 +8,7 @@
 
 import UIKit
 
-//let reuseIdentifier = "Cell"
+
 
 class MemeSentCollectionViewController: UICollectionViewController {
 
@@ -39,14 +39,8 @@ class MemeSentCollectionViewController: UICollectionViewController {
     }
     
 
-   // override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        //#warning Incomplete method implementation -- Return the number of sections
-    //    return 0
-   // }
-
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
         return self.memes.count
 
     }
@@ -59,13 +53,13 @@ class MemeSentCollectionViewController: UICollectionViewController {
         
         cell.imageView.image = meme.memedImage
         
-       //cell?.imageView.image = (UIApplication.sharedApplication().delegate as AppDelegate).memes[indexPath.item].memedImage
-        
         
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        // If item is selected, create a detailview controller, present it, and pass the picture to be presented.
         
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeMeDetailViewController")! as! MemeMeDetailViewController
         
