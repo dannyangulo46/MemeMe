@@ -80,13 +80,39 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             
         }
         
-
+        
+       
     }
     
     override func viewWillDisappear(animated: Bool) {
         self.unsubscribeFromKeyboardNotifications()
-
+        
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    
+    override func viewWillLayoutSubviews() {
+       
+        //Layout constraints for Top and Bottom text fields
+        
+        var verticalConstant:CGFloat = 0.15 * imagePickedView.bounds.size.height
+        
+        
+        var verticalPositionTextFieldTop = NSLayoutConstraint(item: textFieldTop, attribute: .Top, relatedBy: .Equal, toItem: super.view, attribute: .Top, multiplier: 1, constant: verticalConstant)
+        
+        
+        var verticalPositionTextFieldBottom = NSLayoutConstraint(item: textFieldBottom, attribute: .Bottom, relatedBy: .Equal, toItem: super.view, attribute: .Bottom, multiplier: 1, constant: -verticalConstant)
+        
+        
+            view.addConstraint(verticalPositionTextFieldTop)
+            view.addConstraint(verticalPositionTextFieldBottom)
+        
+    }
+    
+    
     
     // CORE FUNCTIONS
 
@@ -200,8 +226,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         
         //Render view to an image
+        
         UIGraphicsBeginImageContext(self.view.frame.size)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        
+        
+        
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
        
