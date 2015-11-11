@@ -33,15 +33,15 @@ class MemeSentCollectionViewController: UICollectionViewController {
     override func viewWillAppear(animated: Bool) {
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
-        self.memes = appDelegate.memes
-        self.tabBarController?.tabBar.hidden = false
-        self.collectionView!.reloadData()
+        memes = appDelegate.memes
+        tabBarController?.tabBar.hidden = false
+        collectionView!.reloadData()
     }
     
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.memes.count
+        return memes.count
 
     }
 
@@ -65,9 +65,9 @@ class MemeSentCollectionViewController: UICollectionViewController {
         
         detailController.memeSelected = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.item]
         
-        self.tabBarController?.tabBar.hidden = true
+        tabBarController?.tabBar.hidden = true
         
-        self.navigationController!.pushViewController(detailController, animated: true)
+        navigationController!.pushViewController(detailController, animated: true)
 
         
         

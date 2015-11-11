@@ -18,8 +18,8 @@ class MemeMeDetailViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.imageView.image = memeSelected.memedImage
-        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "onRightBarButtonTap"), animated:true)
+        imageView.image = memeSelected.memedImage
+        navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "onRightBarButtonTap"), animated:true)
 
     }
     
@@ -40,7 +40,7 @@ class MemeMeDetailViewController: UIViewController {
         editMeme.textTop = memeSelected.topText!
         editMeme.textBottom = memeSelected.bottomText!
         
-        self.presentViewController(editMeme, animated: true, completion: nil)
+        presentViewController(editMeme, animated: true, completion: nil)
         
     }
 

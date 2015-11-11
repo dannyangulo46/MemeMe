@@ -55,15 +55,25 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         textFieldTop.defaultTextAttributes = memeTextAttributes
         textFieldBottom.defaultTextAttributes = memeTextAttributes
-        textFieldTop.textAlignment = NSTextAlignment.Center
-        textFieldBottom.textAlignment = NSTextAlignment.Center
         
+        
+        textFieldAttributes(textFieldTop)
+        textFieldAttributes(textFieldBottom)
         
     }
 
+    // Helper function to set attributes and alignment of text fields
+    
+    func textFieldAttributes(textField: UITextField) {
+        
+        textField.textAlignment = NSTextAlignment.Center
+        
+        
+    }
+    
     override func viewWillAppear(animated: Bool) {
         cameraBarButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        self.subscribeToKeyboardNotifications()
+        subscribeToKeyboardNotifications()
         
         if let tempImage = originalImage {
             imagePickedView.image = tempImage
@@ -85,7 +95,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.unsubscribeFromKeyboardNotifications()
+        unsubscribeFromKeyboardNotifications()
         
     }
     
@@ -119,7 +129,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func dismissMyself(sender: UIBarButtonItem) {
     
-    self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
         
     }
     
@@ -183,7 +193,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func keyboardWillShow(notification: NSNotification) {
         
         if textFieldBottom.isFirstResponder() {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= getKeyboardHeight(notification)
     
         }
     }
@@ -191,7 +201,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
      
         if !(self.view.frame.origin.y == 0) {
         
-        self.view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y += getKeyboardHeight(notification)
         }
     }
     
@@ -221,14 +231,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // Hide toolbar and navbar to memorialize picture with text
         
         
-        self.navBar.hidden = true
-        self.mainToolBar.hidden = true
+            navBar.hidden = true
+            mainToolBar.hidden = true
         
         
         //Render view to an image
         
         UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         
         
         
@@ -237,8 +247,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
        
         
         // Show toolbar and navbar
-        self.mainToolBar.hidden = false
-        self.navBar.hidden = false
+            mainToolBar.hidden = false
+            navBar.hidden = false
         
         
         return memedImage

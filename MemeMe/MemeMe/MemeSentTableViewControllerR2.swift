@@ -22,18 +22,15 @@ class MemeSentTableViewControllerR2: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
-        self.memes = appDelegate.memes
-        self.tableView!.reloadData()
-        self.tabBarController?.tabBar.hidden = false
+        memes = appDelegate.memes
+        tableView!.reloadData()
+        tabBarController?.tabBar.hidden = false
     }
     
-    override func viewDidAppear(animated: Bool) {
-       
-          }
-    
+        
   
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.memes.count
+        return memes.count
     }
 
     
@@ -64,9 +61,9 @@ class MemeSentTableViewControllerR2: UITableViewController {
         
         detailController.memeSelected = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row]
         
-        self.tabBarController?.tabBar.hidden = true
+            tabBarController?.tabBar.hidden = true
         
-        self.navigationController!.pushViewController(detailController, animated: true)
+            navigationController!.pushViewController(detailController, animated: true)
         
     }
     
@@ -93,7 +90,7 @@ class MemeSentTableViewControllerR2: UITableViewController {
         
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
-        self.presentViewController(editMeme, animated: true, completion: nil)
+            presentViewController(editMeme, animated: true, completion: nil)
         
     }
 
