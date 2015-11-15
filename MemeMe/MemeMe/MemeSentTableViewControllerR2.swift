@@ -57,7 +57,7 @@ class MemeSentTableViewControllerR2: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-       let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeMeDetailViewController")! as! MemeMeDetailViewController
+       let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeMeDetailViewController") as!MemeMeDetailViewController
         
         detailController.memeSelected = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row]
         
@@ -88,8 +88,8 @@ class MemeSentTableViewControllerR2: UITableViewController {
     
     @IBAction func addMemedImage(sender: UIBarButtonItem) {
         
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
             presentViewController(editMeme, animated: true, completion: nil)
         
     }

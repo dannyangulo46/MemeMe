@@ -108,13 +108,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
        
         //Layout constraints for Top and Bottom text fields
         
-        var verticalConstant:CGFloat = 0.15 * imagePickedView.bounds.size.height
+        let verticalConstant:CGFloat = 0.15 * imagePickedView.bounds.size.height
         
         
-        var verticalPositionTextFieldTop = NSLayoutConstraint(item: textFieldTop, attribute: .Top, relatedBy: .Equal, toItem: super.view, attribute: .Top, multiplier: 1, constant: verticalConstant)
+        let verticalPositionTextFieldTop = NSLayoutConstraint(item: textFieldTop, attribute: .Top, relatedBy: .Equal, toItem: super.view, attribute: .Top, multiplier: 1, constant: verticalConstant)
         
         
-        var verticalPositionTextFieldBottom = NSLayoutConstraint(item: textFieldBottom, attribute: .Bottom, relatedBy: .Equal, toItem: super.view, attribute: .Bottom, multiplier: 1, constant: -verticalConstant)
+        let verticalPositionTextFieldBottom = NSLayoutConstraint(item: textFieldBottom, attribute: .Bottom, relatedBy: .Equal, toItem: super.view, attribute: .Bottom, multiplier: 1, constant: -verticalConstant)
         
         
             view.addConstraint(verticalPositionTextFieldTop)
@@ -167,7 +167,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         
         
-        activityVC.completionWithItemsHandler = { (activity: String!, completed: Bool, items: [AnyObject]!, error: NSError!) -> Void in
+        activityVC.completionWithItemsHandler = { (activity: String?, completed: Bool, items: [AnyObject]?, error: NSError?) -> Void in
             if completed {
                 self.saveMeme()
                 self.dismissViewControllerAnimated(true, completion: nil)
@@ -219,7 +219,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         
         
-        var meme = Meme(topText: textFieldTop.text, bottomText: textFieldBottom.text, originalImage: self.imagePickedView.image!, memedImage: self.memedImage)
+        let meme = Meme(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: self.imagePickedView.image!, memedImage: self.memedImage)
         
         //Add it to the memes Array on the Application delegate - this will be the shared model
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
@@ -278,7 +278,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickedView.image = image
         }

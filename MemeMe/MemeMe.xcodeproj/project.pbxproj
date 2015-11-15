@@ -171,6 +171,7 @@
 		5BF317CF1B12F6BC00F10A9D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = BajaCalApps;
 				TargetAttributes = {
