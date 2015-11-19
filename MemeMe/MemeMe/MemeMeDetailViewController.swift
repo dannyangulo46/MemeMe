@@ -33,8 +33,8 @@ class MemeMeDetailViewController: UIViewController {
         
                 
         //Present Edito View Controller
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
         
         editMeme.originalImage = memeSelected.originalImage
         editMeme.textTop = memeSelected.topText!

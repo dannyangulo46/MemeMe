@@ -61,7 +61,7 @@ class MemeSentCollectionViewController: UICollectionViewController {
         
         // If item is selected, create a detailview controller, present it, and pass the picture to be presented.
         
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeMeDetailViewController")! as! MemeMeDetailViewController
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeMeDetailViewController") as! MemeMeDetailViewController
         
         detailController.memeSelected = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.item]
         
@@ -75,8 +75,8 @@ class MemeSentCollectionViewController: UICollectionViewController {
     
 
     @IBAction func addMemedImage(sender: UIBarButtonItem) {
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let editMeme = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
         self.presentViewController(editMeme, animated: true, completion: nil)
 
         

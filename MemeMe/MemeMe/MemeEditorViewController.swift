@@ -166,15 +166,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.presentViewController(activityVC, animated: true, completion: nil)
         
         
-        
-        activityVC.completionWithItemsHandler = { (activity: String?, completed: Bool, items: [AnyObject]?, error: NSError?) -> Void in
+        activityVC.completionWithItemsHandler = { activity, completed, items, error -> Void in
             if completed {
                 self.saveMeme()
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
+            
         }
         
-        
+                
     
     }
 
@@ -219,7 +219,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         
         
-        let meme = Meme(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: self.imagePickedView.image!, memedImage: self.memedImage)
+        let meme = Meme (topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: self.imagePickedView.image!, memedImage: self.memedImage)
+        
         
         //Add it to the memes Array on the Application delegate - this will be the shared model
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
