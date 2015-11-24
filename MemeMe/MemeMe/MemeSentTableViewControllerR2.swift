@@ -13,13 +13,10 @@ class MemeSentTableViewControllerR2: UITableViewController {
     var memes = [Meme]()  //Ask the question on what is the difference between that and using memes: [Meme]!
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
     
-    }
-
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
@@ -75,7 +72,7 @@ class MemeSentTableViewControllerR2: UITableViewController {
             let object = UIApplication.sharedApplication().delegate
             let appDelegate = object as! AppDelegate
             appDelegate.memes.removeAtIndex(indexPath.row)
-            self.memes.removeAtIndex(indexPath.row)
+            memes.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         

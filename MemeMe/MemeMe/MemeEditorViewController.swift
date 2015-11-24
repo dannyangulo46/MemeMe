@@ -19,18 +19,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     @IBOutlet weak var imagePickedView: UIImageView!
-    
     @IBOutlet weak var cameraBarButton: UIBarButtonItem!
-    
     @IBOutlet weak var textFieldTop: UITextField!
-    
     @IBOutlet weak var textFieldBottom: UITextField!
-    
     @IBOutlet weak var mainToolBar: UIToolbar!
-    
     @IBOutlet weak var shareButton: UIBarButtonItem!
-    
-    
     @IBOutlet weak var navBar: UINavigationBar!
     
     
@@ -43,19 +36,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textFieldTop.delegate = self
-        textFieldBottom.delegate = self
-        textFieldTop.clearsOnBeginEditing = true
-        textFieldBottom.clearsOnBeginEditing = true
-
-        let memeTextAttributes = [NSStrokeColorAttributeName: UIColor.blackColor(),
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName: NSNumber(float: -3.0)]
-        
-        textFieldTop.defaultTextAttributes = memeTextAttributes
-        textFieldBottom.defaultTextAttributes = memeTextAttributes
-        
         
         textFieldAttributes(textFieldTop)
         textFieldAttributes(textFieldBottom)
@@ -66,6 +46,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func textFieldAttributes(textField: UITextField) {
         
+        textField.delegate = self
+        textField.clearsOnBeginEditing = true
+        
+        let memeTextAttributes = [NSStrokeColorAttributeName: UIColor.blackColor(),
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName: NSNumber(float: -3.0)]
+        
+        textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = NSTextAlignment.Center
         
         
@@ -193,7 +182,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func keyboardWillShow(notification: NSNotification) {
         
         if textFieldBottom.isFirstResponder() {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = -getKeyboardHeight(notification)
     
         }
     }
@@ -201,7 +190,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
      
         if !(self.view.frame.origin.y == 0) {
         
-            view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y = 0
         }
     }
     
@@ -232,8 +221,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // Hide toolbar and navbar to memorialize picture with text
         
         
-            navBar.hidden = true
-            mainToolBar.hidden = true
+        navBar.hidden = true
+        mainToolBar.hidden = true
         
         
         //Render view to an image
@@ -268,7 +257,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         textField.resignFirstResponder()
         
-        return false
+        return true // We want the keyboard to perform its default behavior
     }
 
     

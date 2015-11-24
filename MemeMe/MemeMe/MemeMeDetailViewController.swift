@@ -26,7 +26,7 @@ class MemeMeDetailViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         //Pop current view
-        self.navigationController!.popViewControllerAnimated(false)
+        navigationController!.popViewControllerAnimated(false)
     }
     
     func onRightBarButtonTap() {
